@@ -10,4 +10,14 @@
 
   npm i react-router-dom
 
+npm i @reduxjs/toolkit antd react-redux
+
   
+
+
+
+
+
+
+<!-- git hab команди -->
+git remote show origin  // получить данные об удалённом репозитории с сокращенным именем origin
