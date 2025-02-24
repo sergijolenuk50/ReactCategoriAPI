@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from './components/Layout'
 import AboutPage from './pages/AboutPage'
 import CategoryListPage from './pages/Category/CategoryListPage'
-import CreateCategoryPage from './pages/Category/CreateCategory'
+import CreateCategoryPage from './pages/Category/CreateCategoryPage'
 import EditCategoryPage from './pages/Category/EditCategoryPage'
 import ContactPage from './pages/Contact.Page'
 import HomePage from './pages/HomePage'
