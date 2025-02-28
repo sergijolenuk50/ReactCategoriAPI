@@ -1,0 +1,59 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {APP_ENV} from "../env/index.ts";
+import { IProductItem, IProductPostRequest, IProductPutRequest } from './types.ts';
+import {serialize} from "object-to-formdata";
+
+
+export const apiProduct = createApi({
+    reducerPath: 'product',
+    baseQuery: fetchBaseQuery({ baseUrl: `${APP_ENV.REMOTE_BASE_URL}` }),
+    tagTypes: ["Product"],
+    endpoints: (builder) => ({
+        getProducts: builder.query<IProductItem[], void>({
+            query: () => 'products',
+            providesTags: ["Product"],
+        }),
+        getProduct: builder.query<IProductItem, number>({
+            query: (id) => `products/${id}`,
+            providesTags: (_, __, id) => [{ type: 'Product', id }],
+        }),
+        createProduct:builder.mutation<IProductPostRequest, FormData>({
+            query: (formData) => ({
+                url: 'products',
+                method: 'POST',
+                body: formData,
+            }),
+            invalidatesTags: ["Product"],
+        }),
+        updateProduct: builder.mutation<IProductItem, IProductPutRequest>({
+            query: ({ id, ...updateProduct }) => {
+                try {
+                    const formData = serialize(updateProduct);
+                    return {
+                        url: `categories/${id}`,
+                        method: 'PUT',
+                        body: formData,
+                    };
+                } catch {
+                    throw new Error("Error serializing the form data.");
+                }
+            },
+            invalidatesTags: ["Product"],
+        }),
+        deleteProduct: builder.mutation<{ success: boolean }, number>({
+            query: (id) => ({
+                url: `products/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ["Product"],
+        }),
+
+    }),
+});
+export const {
+    useGetProductsQuery,
+    useGetProductQuery,
+    useCreateProductMutation,
+    useUpdateProductMutation,
+    useDeleteProductMutation
+} = apiProduct;

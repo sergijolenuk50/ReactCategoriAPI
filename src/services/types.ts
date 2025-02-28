@@ -15,3 +15,30 @@ export interface ICategoryPostRequest {
 export interface ICategoryPutRequest extends Partial<ICategoryPostRequest> {
     id: number;
 }
+
+export interface IProductItem {
+    id: number;
+    name: string;
+    price: number;
+    categoryId: string;
+    images: {
+        id: number;
+        name: string;
+        priority: number;
+        productId: number | null;
+    }[];
+}
+
+export interface IProductPostRequest {
+    name: string;
+    price: number;
+    categoryId: string;
+    images?: File[];
+}
+export interface IProductPutRequest {
+    id: number;
+    name: string;
+    price: number;
+    categoryId: string;
+    images?: File[];
+}

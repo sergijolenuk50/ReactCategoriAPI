@@ -15,7 +15,8 @@ npm i @reduxjs/toolkit antd react-redux
 npm i object-to-formdata
   
 
-
+npm i react-dnd
+npm install @hello-pangea/dnd
 
 
 
