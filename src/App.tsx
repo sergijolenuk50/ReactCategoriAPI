@@ -9,6 +9,7 @@ import EditCategoryPage from './pages/Category/EditCategoryPage'
 import ContactPage from './pages/Contact.Page'
 import HomePage from './pages/HomePage'
 import CreateProductPage from "./pages/Product/CreateProductPage";
+import EditProductPage from "./pages/Product/EditProductPage";
 import ProductList from "./pages/Product/ProductList";
 
 
@@ -42,7 +43,7 @@ function App() {
             <Route path="products">
                         <Route index element={<ProductList />} />
                         <Route path="create" element={<CreateProductPage />} />
-                        {/*<Route path="edit/:id" element={<EditProductPage />} />*/}
+                        <Route path="edit/:id" element={<EditProductPage />} />
                         {/*<Route path="product/:id" element={<ProductDetail />} />*/}
                     </Route>
         </Route>
