@@ -4,6 +4,7 @@ import { IProductItem, IProductPostRequest, IProductPutRequest } from './types.t
 import {serialize} from "object-to-formdata";
 
 
+
 export const apiProduct = createApi({
     reducerPath: 'product',
     baseQuery: fetchBaseQuery({ baseUrl: `${APP_ENV.REMOTE_BASE_URL}` }),
@@ -17,11 +18,11 @@ export const apiProduct = createApi({
             query: (id) => `products/${id}`,
             providesTags: (_, __, id) => [{ type: 'Product', id }],
         }),
-        createProduct:builder.mutation<IProductPostRequest, FormData>({
+        createProduct:builder.mutation<IProducItem, IProductPostRequest>({
             query: (formData) => ({
                 url: 'products',
                 method: 'POST',
-                body: formData,
+                body: serialize(formData),
             }),
             invalidatesTags: ["Product"],
         }),

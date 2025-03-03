@@ -474,12 +474,19 @@ const EditProductPage = () => {
                 ...productData
             });
 
+            // const updatedFileList: UploadFile[] = productData.images?.map((image, index) => ({
+            //     uid: image.id.toString(),
+            //     name: image.name,
+            //     url: `${APP_ENV.REMOTE_LARGE_IMAGES_URL}${image.name}`,
+            //     order: index,
+            // })) || [];
+
             const updatedFileList: UploadFile[] = productData.images?.map((image, index) => ({
                 uid: image.id.toString(),
                 name: image.name,
                 url: `${APP_ENV.REMOTE_LARGE_IMAGES_URL}${image.name}`,
-                order: index,
-            })) || [];
+                originFileObj: new File([new Blob([''])],image.name,{type: 'old-image'})
+            } as UploadFile)) || [];
 
             setFileList(updatedFileList);
         }
@@ -549,7 +556,7 @@ const EditProductPage = () => {
 
     return (
         <div className="max-w-lg mx-auto my-6">
-            <h1 className="text-3xl font-bold mb-4">Додати продукт</h1>
+            <h1 className="text-3xl font-bold mb-4">Редагувати продукт</h1>
             <Form
                 form={form}
                 onFinish={onFinish}
