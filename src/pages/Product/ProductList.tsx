@@ -90,7 +90,10 @@ const ProductList = () => {
                                 </td>
                                 <td className="px-6 py-4">
                                     <img
-                                        src={product.images[0].name ? `${APP_ENV.REMOTE_LARGE_IMAGES_URL}${product.images[0].name }` : defaultProductImage}
+                                        // src={product.images[0].name ? `${APP_ENV.REMOTE_LARGE_IMAGES_URL}${product.images[0].name }` : defaultProductImage}
+                                        src={product.images && Array.isArray(product.images) && product.images[0] && product.images[0].name
+                                            ? `${APP_ENV.REMOTE_LARGE_IMAGES_URL}${product.images[0].name}`
+                                            : defaultProductImage}
                                         alt={product.name} className="w-16 h-16 object-cover"
                                     />
                                 </td>

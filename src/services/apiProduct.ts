@@ -31,7 +31,7 @@ export const apiProduct = createApi({
                 try {
                     const formData = serialize(updateProduct);
                     return {
-                        url: `categories/${id}`,
+                        url: `products/${id}`,
                         method: 'PUT',
                         body: formData,
                     };
