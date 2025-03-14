@@ -18,7 +18,7 @@ export const apiProduct = createApi({
             query: (id) => `products/${id}`,
             providesTags: (_, __, id) => [{ type: 'Product', id }],
         }),
-        createProduct:builder.mutation<IProducItem, IProductPostRequest>({
+        createProduct:builder.mutation<IProductItem, IProductPostRequest>({
             query: (formData) => ({
                 url: 'products',
                 method: 'POST',

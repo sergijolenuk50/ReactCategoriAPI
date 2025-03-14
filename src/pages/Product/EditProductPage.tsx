@@ -1,10 +1,6 @@
-
-
-
-
 import {useState, useEffect} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import {Button, Input, notification, Upload, Select, Form} from "antd";
+import {Button, Input, Upload, Select, Form} from "antd";
 import {PlusOutlined} from "@ant-design/icons";
 import {useGetProductQuery, useUpdateProductMutation} from "../../services/apiProduct";
 import {useGetCategoriesQuery} from "../../services/apiCategory";
@@ -19,7 +15,7 @@ import Item from "antd/es/list/Item";
 const EditProductPage = () => {
     const {id} = useParams<{ id: string }>();
     const navigate = useNavigate();
-    const {data: productData, isLoading: isProductLoading} = useGetProductQuery(Number(id));
+    const {data: productData} = useGetProductQuery(Number(id));
     const {data: categories, isLoading: isCategoriesLoading, error: categoriesError} = useGetCategoriesQuery();
     const [updateProduct] = useUpdateProductMutation();
 
