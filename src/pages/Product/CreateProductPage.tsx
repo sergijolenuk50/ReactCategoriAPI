@@ -168,7 +168,7 @@ const CreateProductPage = () => {
                 </div>
             </Upload>
 
-            <Button type="primary" onClick={handleSubmit} desablet={isLoadingCreate} className="mt-4 w-full">
+            <Button type="primary" onClick={handleSubmit} disabled={isLoadingCreate} className="mt-4 w-full">
                 {isLoadingCreate ? <span>Збреження .....</span> : <span>Зберегти</span>}
                 {/* Зберегти */}
             </Button>

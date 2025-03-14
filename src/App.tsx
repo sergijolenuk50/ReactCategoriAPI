@@ -1,5 +1,5 @@
 // import './App.css'
-import React from "react";
+// import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from './components/Layout'
 import AboutPage from './pages/AboutPage'
@@ -11,6 +11,7 @@ import HomePage from './pages/HomePage'
 import CreateProductPage from "./pages/Product/CreateProductPage";
 import EditProductPage from "./pages/Product/EditProductPage";
 import ProductList from "./pages/Product/ProductList";
+import RegisterPage from "./pages/auth/RegisterPage.tsx";
 
 
 
@@ -46,6 +47,7 @@ function App() {
                         <Route path="edit/:id" element={<EditProductPage />} />
                         {/*<Route path="product/:id" element={<ProductDetail />} />*/}
                     </Route>
+            <Route path="register" element={<RegisterPage/>}/>
         </Route>
     </Routes>
 </Router>
