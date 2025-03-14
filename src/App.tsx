@@ -12,6 +12,7 @@ import CreateProductPage from "./pages/Product/CreateProductPage";
 import EditProductPage from "./pages/Product/EditProductPage";
 import ProductList from "./pages/Product/ProductList";
 import RegisterPage from "./pages/auth/RegisterPage.tsx";
+import LoginPage from "./pages/auth/LoginPage.tsx";
 
 
 
@@ -48,6 +49,7 @@ function App() {
                         {/*<Route path="product/:id" element={<ProductDetail />} />*/}
                     </Route>
             <Route path="register" element={<RegisterPage/>}/>
+            <Route path="login" element={<LoginPage/>}/>
         </Route>
     </Routes>
 </Router>
