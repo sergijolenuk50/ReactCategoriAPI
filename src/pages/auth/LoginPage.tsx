@@ -170,16 +170,16 @@ import {GoogleOAuthProvider} from "@react-oauth/google";
 import {APP_ENV} from "../../env";
 import GoogleLoginButton from "./GoogleLoginButton.tsx";
 import { GoogleOutlined } from '@ant-design/icons';
-// import {useNavigate} from "react-router-dom";
-// import {useRegisterUserMutation} from "../../services/authApi.ts";
+import {useNavigate} from "react-router-dom";
+import {useGoogleLoginUserMutation} from "../../services/authApi.ts";
 
 const {Item} = Form;
 
 const LoginPage: React.FC = () => {
 
     const [form] = Form.useForm<IUserRegisterRequest>();
-    // const navigate = useNavigate();
-    // const [registerUser] = useRegisterUserMutation();
+    const navigate = useNavigate();
+    const [googleLoginUser] = useGoogleLoginUserMutation();
 
     const onFinish = async (values: IUserLoginRequest) => {
 
@@ -194,8 +194,15 @@ const LoginPage: React.FC = () => {
         // }
     }
 
-    const onLoginGoogleResult = (tokenGoogle:string) => {
-        console.log("google token", tokenGoogle);
+    const onLoginGoogleResult = async (tokenGoogle:string) => {
+        try {
+            console.log("Register user google", tokenGoogle);
+            const response = await googleLoginUser({token: tokenGoogle}).unwrap();
+            console.log("Користувача успішно зайшов через google", response);
+            navigate("..");
+        } catch (error) {
+            console.error("Поилка при реєстрації", error);
+        }
     }
 
     return (
